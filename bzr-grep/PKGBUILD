@@ -7,8 +7,8 @@ arch=('any')
 url="https://launchpad.net/bzr-grep/"
 license=('GPL')
 depends=("python2" "bzr")
-source=("http://bazaar.launchpad.net/~bzr/${pkgname}/trunk/tarball/147")
-md5sums=('82fac793df88e346a87972c87105a2ab')
+source=("http://launchpad.net/${pkgname}/trunk/${pkgver}-final/+download/${pkgname}-${pkgver}.tar.gz")
+md5sums=('90a71ed4017d091fa91fd4ee8caf62a8')
 
 build() {
 	:
