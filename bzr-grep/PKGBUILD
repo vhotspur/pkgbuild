@@ -1,0 +1,21 @@
+# Contributor: Vojtech Horky <vojta . horky at-symbol seznam . cz>
+pkgname=bzr-grep
+pkgver=0.4.0
+pkgrel=1
+pkgdesc="Bazaar plugin to grep files"
+arch=('any')
+url="https://launchpad.net/bzr-grep/"
+license=('GPL')
+depends=("python2" "bzr")
+source=("http://bazaar.launchpad.net/~bzr/${pkgname}/trunk/tarball/147")
+md5sums=('82fac793df88e346a87972c87105a2ab')
+
+build() {
+	:
+}
+
+package() {
+	cd ${srcdir}/${pkgname}-${pkgver}
+	python2 ./setup.py install --prefix=/usr --root "${pkgdir}"
+}
+
