@@ -9,7 +9,7 @@ pkgdesc="Experimental extension of the GNU Awk interpreter, including a small XM
 url="http://home.vrweb.de/~juergen.kahrs/gawk/XML/"
 depends=('postgresql-libs' 'gd' 'mpfr')
 license=('GPL')
-source=(http://downloads.sourceforge.net/xmlgawk/$pkgname-$pkgver.tar.gz)
+source=(http://downloads.sourceforge.net/gawkextlib/$pkgname-$pkgver.tar.gz)
 md5sums=('5ec2a31a6a0260822b39e774125c794c')
 
 build() {
