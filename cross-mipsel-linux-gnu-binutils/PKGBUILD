@@ -2,7 +2,7 @@
 pkgname=cross-mipsel-linux-gnu-binutils
 _pkgname=binutils
 _target="mipsel-linux-gnu"
-pkgver=2.22
+pkgver=2.24
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS architecture"
 url="http://www.gnu.org/software/binutils/"
@@ -10,10 +10,19 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('zlib')
 source=("ftp://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('ee0f10756c84979622b992a4a61ea3f5')
+md5sums=('e0f71a7b2ddab0f8612336ac81d9636b')
 _sysroot="/usr/lib/cross-${_target}"
 
+prepare() {
+	cd ${srcdir}/${_pkgname}-${pkgver}
+	
+	# Hack - see native package for details
+	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+}
+
+
 build() {
+
 	cd ${srcdir}/${_pkgname}-${pkgver}
 	
 	./configure \
@@ -21,6 +30,7 @@ build() {
 		"--bindir=/usr/bin" "--program-prefix=${_target}-" \
 		"--with-sysroot=${_sysroot}" \
 		"--target=${_target}" "--build=$CHOST" "--host=$CHOST" \
+		--disable-werror \
 		"--disable-nls" \
 		--with-gcc --with-gnu-as --with-gnu-ld \
 		--without-included-gettext
